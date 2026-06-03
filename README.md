@@ -26,7 +26,7 @@ their shifts and broadcast GPS location from their mobile devices.
 - API calls have graceful error handling (setting error state and 
   returning null/false rather than throwing). Prevents crashes UI-side when encountering unexpected behaviour
 
-### `app/driver/page.js` (Driver Console UI)
+### `pages/driver/page.js` (Driver Console UI)
 - Full driver-facing console page using the above hook, as well as `hooks/useGeolocation.js`, which handled pinging the driver's location along their route
 - Role-based route protection (redirects non-driver users to the 
   student view on mount using Clerk's `publicMetadata`)
