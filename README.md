@@ -27,7 +27,7 @@ their shifts and broadcast GPS location from their mobile devices.
   returning null/false rather than throwing). Prevents crashes UI-side when encountering unexpected behaviour
 
 ### `pages/driver/page.js` (Driver Console UI)
-- Full driver-facing console page using the above hook, as well as `hooks/useGeolocation.js`, which handled pinging the driver's location along their route
+- Full driver-facing console page using the above hook, as well as `hooks/useGeolocation.js`, which retrieved the driver's location along their route
 - Role-based route protection (redirects non-driver users to the 
   student view on mount using Clerk's `publicMetadata`)
 - Sticky mobile bottom bar for shift controls, optimized for 
@@ -43,4 +43,4 @@ their shifts and broadcast GPS location from their mobile devices.
 policy. This repository contains my personal contributions and project 
 documentation.
 
-- Full demo may not be accessable as backend is no longer active.
+- Full demo may not be accessable as backend is no longer active
