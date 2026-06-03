@@ -9,7 +9,7 @@ their shifts and broadcast GPS location from their mobile devices.
 
 ## Tech Stack
 
-- **Frontend:** Next.js, React, JavaScript, Tailwind CSS, shadcn/ui
+- **Frontend:** Next.js, React, JavaScript, Tailwind CSS
 - **Auth:** Clerk (JWT-based, role-aware)
 - **Backend:** REST API (Node.js)
 - **Database:** PostgreSQL
