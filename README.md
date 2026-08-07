@@ -5,7 +5,6 @@ allowing students to see live shuttle locations on a map and drivers to manage
 their shifts and broadcast GPS location from their mobile devices.
 
 **Built by a team of 5 as part of CS372: Web Development at Purdue Fort Wayne.**
-**Demo:** [pfw-shuttle.vercel.app](https://pfw-shuttle.vercel.app/)
 
 ## Tech Stack
 
