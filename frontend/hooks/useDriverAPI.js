@@ -1,4 +1,4 @@
-import { useAuth, useUser } from "@clerk/nextjs";
+import { useAuth } from "@clerk/nextjs";
 import { useCallback, useState, useEffect } from "react";
 
 /**
@@ -6,8 +6,7 @@ import { useCallback, useState, useEffect } from "react";
  * Handles JWT token authentication, route fetching, shift management, and GPS pings
  */
 export function useDriverAPI() {
-  const { userId } = useAuth();
-  const { user } = useUser();
+  const { userId, getToken } = useAuth();
   const [jwtToken, setJwtToken] = useState(null);
   const [driverData, setDriverData] = useState(null);
   const [routes, setRoutes] = useState([]);
@@ -23,14 +22,19 @@ export function useDriverAPI() {
       if (!userId) return;
 
       try {
+        const clerkToken = await getToken();
+        if (!clerkToken) {
+          setLastError("Clerk session token unavailable");
+          return;
+        }
+
         const response = await fetch(`${apiBaseUrl}/api/auth/driver-login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            // Ensures active clerk session before issuing a JWT for the driver API.
+            Authorization: `Bearer ${clerkToken}`,
           },
-          body: JSON.stringify({
-            clerkUserId: userId,
-          }),
         });
 
         console.log("1:", response);
@@ -65,7 +69,7 @@ export function useDriverAPI() {
     };
 
     getDriverToken();
-  }, [userId, apiBaseUrl]);
+  }, [userId, getToken, apiBaseUrl]);
 
   // Fetch available routes
   useEffect(() => {
